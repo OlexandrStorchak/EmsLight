@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+
+development:
+  <<: *default
+  database: EmsLight_development
+test:
+  <<: *default
+  database: EmsLight_test
+production:
+  <<: *default
+  database: EmsLight_production
+  username: EmsLight
+  password: <%= ENV["EMSLIGHT_DATABASE_PASSWORD"] %>
