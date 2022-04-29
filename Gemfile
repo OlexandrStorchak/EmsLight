@@ -11,6 +11,14 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "bootsnap", require: false
 
+gem 'activeadmin'
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
+gem "sassc-rails"
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
