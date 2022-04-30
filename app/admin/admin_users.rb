@@ -1,22 +1,31 @@
 ActiveAdmin.register AdminUser do
+  config.sort_order = "last_name_asc"
+
   permit_params :email, :password, :password_confirmation, :first_name, :last_name
+
+  filter :first_name
+  filter :last_name
+  filter :email
+  filter :created_at
 
   index do
     selectable_column
     id_column
-    column :email
     column :first_name
     column :last_name
-    column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+    column :email
     actions
   end
 
-  filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  show do
+    panel "User" do
+      table_for admin_user do
+        column :first_name
+        column :last_name
+        column :email
+      end
+    end
+  end
 
   form do |f|
     f.inputs do
@@ -29,4 +38,10 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 
+  sidebar :details, only: :show do
+    attributes_table_for admin_user do
+      row :created_at
+      row :updated_at
+    end
+  end
 end
