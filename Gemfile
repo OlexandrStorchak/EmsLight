@@ -13,10 +13,9 @@ gem "bootsnap", require: false
 
 gem 'activeadmin'
 gem 'devise'
-gem 'cancancan'
 gem 'draper'
 gem 'pundit'
-
+gem 'enumerize'
 gem "sassc-rails"
 
 group :development, :test do
