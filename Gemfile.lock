@@ -105,7 +105,6 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
-    cancancan (3.3.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
@@ -137,6 +136,8 @@ GEM
     dry-initializer-rails (3.1.1)
       dry-initializer (>= 2.4, < 4)
       rails (> 3.0)
+    enumerize (2.5.0)
+      activesupport (>= 3.2)
     erubi (1.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -358,11 +359,11 @@ DEPENDENCIES
   auxiliary_rails
   bootsnap
   byebug
-  cancancan
   debug
   devise
   dotenv-rails
   draper
+  enumerize
   factory_bot_rails
   faker
   importmap-rails
