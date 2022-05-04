@@ -3,7 +3,6 @@ ActiveAdmin.register AdminUser do
 
   permit_params :email, :password, :password_confirmation, :first_name, :last_name, :role
 
-  filter :role
   filter :first_name
   filter :last_name
   filter :email

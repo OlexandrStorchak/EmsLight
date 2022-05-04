@@ -7,6 +7,30 @@ class AdminUserPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user.super? || user.user?
+  end
+
+  def show?
+    user.super? || user.user?
+  end
+
+  def create?
+    user.super?
+  end
+
+  def new?
+    create?
+  end
+
+  def update?
+    user.super? || user.id == record.id
+  end
+
+  def edit?
+    update?
+  end
+
+  def destroy?
+    user.super? if user.id != record.id
   end
 end

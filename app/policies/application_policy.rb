@@ -17,7 +17,7 @@ class ApplicationPolicy
   end
 
   def create?
-    true
+    user.super?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    true
+    user.super?
   end
 
   def edit?
@@ -33,7 +33,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    true
+    user.super?
   end
 
   class Scope
@@ -43,7 +43,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      raise NotImplementedError, "You must define #resolve in #{self.class}"
+      scope
     end
 
     private
