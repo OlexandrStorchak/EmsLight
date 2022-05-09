@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_111244) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_09_133828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_111244) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "author_id"
+    t.string "description"
+    t.datetime "occured_at", precision: nil
+    t.integer "agent_id"
+    t.integer "category_id"
+    t.integer "project_id"
+    t.integer "debit_account_id"
+    t.integer "credit_account_id"
+    t.integer "debit_amount"
+    t.integer "credit_amount"
+    t.index ["credit_amount"], name: "index_transactions_on_credit_amount"
+    t.index ["debit_amount"], name: "index_transactions_on_debit_amount"
+    t.index ["occured_at"], name: "index_transactions_on_occured_at"
   end
 
 end
