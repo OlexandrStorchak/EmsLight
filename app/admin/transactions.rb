@@ -6,7 +6,7 @@ ActiveAdmin.register Transaction do
     f.inputs do
       f.input :description
       f.input :occured_at, :as => :date_select, :selected => Date.today
-      f.input :author_id, :as => :select, :collection => AdminUser.pluck(:first_name, :id),
+      f.input :author_id, :as => :select, :collection => AdminUser.all,
                           :prompt => "Please select", :selected => current_admin_user
       f.input :account, :prompt => "Please select"
 

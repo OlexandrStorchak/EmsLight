@@ -4,8 +4,9 @@ class Transaction < ApplicationRecord
   belongs_to :agent
   belongs_to :category
   belongs_to :project
-  #validates :agent_id
-  validates :description, presence: { message: "description cant be blanc" }
+
+  validates :description, presence: { message: "description cant be blank" }
+  validates :occured_at, presence: true
   validate :date_only_in_past
 
   def date_only_in_past

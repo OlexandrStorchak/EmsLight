@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_194152) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "description", default: "", null: false
-    t.datetime "occured_at", precision: nil
+    t.datetime "occured_at", precision: nil, null: false
     t.integer "author_id"
     t.integer "account_id"
     t.integer "agent_id"
