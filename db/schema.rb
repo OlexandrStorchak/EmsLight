@@ -74,19 +74,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_194152) do
     t.index ["project_id"], name: "index_transactions_on_project_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.integer "author_id"
-    t.string "description"
-    t.datetime "occured_at", precision: nil
-    t.integer "agent_id"
-    t.integer "category_id"
-    t.integer "project_id"
-    t.integer "debit_account_id"
-    t.integer "credit_account_id"
-    t.integer "debit_amount"
-    t.integer "credit_amount"
-    t.index ["credit_amount"], name: "index_transactions_on_credit_amount"
-    t.index ["debit_amount"], name: "index_transactions_on_debit_amount"
-    t.index ["occured_at"], name: "index_transactions_on_occured_at"
-  end
 end
