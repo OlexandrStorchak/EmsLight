@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_133828) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_16_194152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -51,20 +49,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_133828) do
 
   create_table "agents", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "description", default: "", null: false
+    t.datetime "occured_at", precision: nil
+    t.integer "author_id"
+    t.integer "account_id"
+    t.integer "agent_id"
+    t.integer "category_id"
+    t.integer "project_id"
+    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["agent_id"], name: "index_transactions_on_agent_id"
+    t.index ["author_id"], name: "index_transactions_on_author_id"
+    t.index ["category_id"], name: "index_transactions_on_category_id"
+    t.index ["project_id"], name: "index_transactions_on_project_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -82,5 +89,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_133828) do
     t.index ["debit_amount"], name: "index_transactions_on_debit_amount"
     t.index ["occured_at"], name: "index_transactions_on_occured_at"
   end
-
 end
