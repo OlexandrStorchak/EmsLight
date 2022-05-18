@@ -74,4 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_194152) do
     t.index ["project_id"], name: "index_transactions_on_project_id"
   end
 
+  add_foreign_key "transactions", "accounts"
+  add_foreign_key "transactions", "admin_users", column: "author_id"
+  add_foreign_key "transactions", "agents"
+  add_foreign_key "transactions", "categories"
+  add_foreign_key "transactions", "projects"
 end

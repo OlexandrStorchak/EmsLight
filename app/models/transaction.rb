@@ -1,5 +1,5 @@
 class Transaction < ApplicationRecord
-  belongs_to :admin_user, primary_key: "id", foreign_key: "author_id"
+  belongs_to :admin_user, foreign_key: "author_id"
   belongs_to :account
   belongs_to :agent, optional: true
   belongs_to :category, optional: true
