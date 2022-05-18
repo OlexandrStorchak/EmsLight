@@ -42,7 +42,8 @@ ActiveAdmin.register Transaction do
   end
   controller do
     def set_default_author_id_param
-      params[:transaction][:author_id] = current_admin_user.id if !current_admin_user.role == "super"
+      params[:transaction][:author_id] = current_admin_user.id if current_admin_user.role != "super"
+      debugger
     end
   end
 end
