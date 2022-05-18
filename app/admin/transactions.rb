@@ -16,7 +16,7 @@ ActiveAdmin.register Transaction do
       f.input :author, :as => :select, :collection => AdminUser.pluck(:first_name, :id),
                        :include_blank => false, :selected => object.author_id if action_name == "edit" && current_admin_user.role == "super"
       f.input :author, :as => :select, :collection => AdminUser.pluck(:first_name, :id),
-                       :include_blank => false, :selected => current_admin_user.id if (action_name == "new" || action_name == "create") && current_admin_user.role == "user"
+                       :include_blank => false, :selected => current_admin_user.id, :input_html => { :disabled => true } if (action_name == "new" || action_name == "create") && current_admin_user.role == "user"
 
       f.input :account, :prompt => "Please select"
       f.input :agent, :prompt => "Please select"
@@ -43,7 +43,6 @@ ActiveAdmin.register Transaction do
   controller do
     def set_default_author_id_param
       params[:transaction][:author_id] = current_admin_user.id if current_admin_user.role != "super"
-      debugger
     end
   end
 end
